@@ -1,6 +1,6 @@
 package Log::Any::Adapter::ScreenColoredLevel;
 BEGIN {
-  $Log::Any::Adapter::ScreenColoredLevel::VERSION = '0.01';
+  $Log::Any::Adapter::ScreenColoredLevel::VERSION = '0.02';
 }
 # ABSTRACT: Send logs to screen with colorized messages according to level
 
@@ -55,16 +55,18 @@ for my $method (Log::Any->logging_methods()) {
 
             return if $logging_levels{$method} <
                 $logging_levels{$self->{min_level}};
+
+            my $nl = $format =~ /\R\z/ ? "" : "\n";
+
             if ($self->{use_color}) {
                 $format = Term::ANSIColor::colored(
                     $format, $self->{colors}{$method} // "");
             }
-            $format = "$format\n";
 
             if ($self->{stderr}) {
-                print STDERR $format;
+                print STDERR $format, $nl;
             } else {
-                print $format;
+                print $format, $nl;
             }
         }
     );
@@ -92,7 +94,7 @@ Log::Any::Adapter::ScreenColoredLevel - Send logs to screen with colorized messa
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 

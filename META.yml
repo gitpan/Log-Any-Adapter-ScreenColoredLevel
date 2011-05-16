@@ -21,4 +21,4 @@ requires:
 resources:
   homepage: http://search.cpan.org/dist/Log-Any-Adapter-ScreenColoredLevel/
   repository: http://github.com/sharyanto/perl-Log-Any-Adapter-ScreenColoredLevel
-version: 0.01
+version: 0.02
