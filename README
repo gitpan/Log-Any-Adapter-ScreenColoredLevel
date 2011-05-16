@@ -1,0 +1,76 @@
+NAME
+    Log::Any::Adapter::ScreenColoredLevel - Send logs to screen with
+    colorized messages according to level
+
+VERSION
+    version 0.01
+
+SYNOPSIS
+     use Log::Any::Adapter;
+     Log::Any::Adapter->set('ScreenColoredLevel',
+         # min_level => 'debug', # default is 'warning'
+         # colors    => { trace => 'bold yellow on_gray', ... }, # customize colors
+         # use_color => 1, # force color even when not interactive
+         # stderr    => 0, # print to STDOUT instead of STDERR
+     );
+
+DESCRIPTION
+    This Log::Any adapter prints log messages to screen (STDERR/STDOUT)
+    colored according to level. It is just like
+    Log::Log4perl::Appender::ScreenColoredLevel, even down to the default
+    colors, except that you don't have to use Log::Log4perl.
+
+    Parameters:
+
+    *   min_level => STRING
+
+        Set logging level. Default is warning. If LOG_LEVEL environment
+        variable is set, it will be used instead. If TRACE environment
+        variable is set to true, level will be set to 'trace'. If DEBUG
+        environment variable is set to true, level will be set to 'debug'.
+        If VERBOSE environment variable is set to true, level will be set to
+        'info'.If QUIET environment variable is set to true, level will be
+        set to 'error'.
+
+    *   use_color => BOOL
+
+        Whether to use color or not. Default is true only when running
+        interactively (-t STDOUT returns true).
+
+    *   colors => HASH
+
+        Customize colors. Hash keys are the logging methods, hash values are
+        colors supported by Term::ANSIColor.
+
+        The default colors are:
+
+         method/level                 color
+         ------------                 -----
+         trace                        yellow
+         debug                        (none, terminal default)
+         info, notice                 green
+         warning                      blue
+         error                        magenta
+         critical, alert, emergency   red
+
+    *   stderr => BOOL
+
+        Whether to print to STDERR, default is true. If set to 0, will print
+        to STDOUT instead.
+
+SEE ALSO
+    Log::Any
+
+    Log::Log4perl::Appender::ScreenColoredLevel
+
+    Term::ANSIColor
+
+AUTHOR
+    Steven Haryanto <stevenharyanto@gmail.com>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2011 by Steven Haryanto.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+
