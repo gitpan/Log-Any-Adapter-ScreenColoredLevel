@@ -3,22 +3,23 @@ abstract: 'Send logs to screen with colorized messages according to level'
 author:
   - 'Steven Haryanto <stevenharyanto@gmail.com>'
 build_requires:
+  Log::Any: 0
   Module::Build: 0.3601
+  Test::More: 0.96
 configure_requires:
   Module::Build: 0.3601
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.200000, CPAN::Meta::Converter version 2.102400'
+generated_by: 'Dist::Zilla version 4.300006, CPAN::Meta::Converter version 2.113640'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: Log-Any-Adapter-ScreenColoredLevel
 requires:
-  Log::Any::Adapter: 0
-  Term::ANSIColor: 0
-  Test::More: 0.96
+  Log::Any::Adapter::Base: 0
+  Log::Any::Adapter::Util: 0
   perl: 5.010000
 resources:
   homepage: http://search.cpan.org/dist/Log-Any-Adapter-ScreenColoredLevel/
   repository: http://github.com/sharyanto/perl-Log-Any-Adapter-ScreenColoredLevel
-version: 0.03
+version: 0.04

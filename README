@@ -3,7 +3,7 @@ NAME
     colorized messages according to level
 
 VERSION
-    version 0.03
+    version 0.04
 
 SYNOPSIS
      use Log::Any::Adapter;
@@ -12,14 +12,15 @@ SYNOPSIS
          # colors    => { trace => 'bold yellow on_gray', ... }, # customize colors
          # use_color => 1, # force color even when not interactive
          # stderr    => 0, # print to STDOUT instead of STDERR
-         # formatter => sub { "LOG: $_[2]" }, # default none
+         # formatter => sub { "LOG: $_[1]" }, # default none
      );
 
 DESCRIPTION
     This Log::Any adapter prints log messages to screen (STDERR/STDOUT)
     colored according to level. It is just like
     Log::Log4perl::Appender::ScreenColoredLevel, even down to the default
-    colors, except that you don't have to use Log::Log4perl.
+    colors, except that you don't have to use Log::Log4perl. Of course,
+    unlike Log4perl, it only logs to screen and has minimal features.
 
     Parameters:
 
@@ -81,7 +82,7 @@ AUTHOR
     Steven Haryanto <stevenharyanto@gmail.com>
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2011 by Steven Haryanto.
+    This software is copyright (c) 2012 by Steven Haryanto.
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.

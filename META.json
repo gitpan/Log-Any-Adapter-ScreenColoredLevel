@@ -1,0 +1,55 @@
+{
+   "abstract" : "Send logs to screen with colorized messages according to level",
+   "author" : [
+      "Steven Haryanto <stevenharyanto@gmail.com>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Dist::Zilla version 4.300006, CPAN::Meta::Converter version 2.113640",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Log-Any-Adapter-ScreenColoredLevel",
+   "prereqs" : {
+      "build" : {
+         "requires" : {
+            "Module::Build" : "0.3601"
+         }
+      },
+      "configure" : {
+         "requires" : {
+            "Module::Build" : "0.3601"
+         }
+      },
+      "develop" : {
+         "requires" : {
+            "Test::Rinci" : "0.01"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Log::Any::Adapter::Base" : 0,
+            "Log::Any::Adapter::Util" : 0,
+            "perl" : "5.010000"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "Log::Any" : 0,
+            "Test::More" : "0.96"
+         }
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "homepage" : "http://search.cpan.org/dist/Log-Any-Adapter-ScreenColoredLevel/",
+      "repository" : {
+         "url" : "http://github.com/sharyanto/perl-Log-Any-Adapter-ScreenColoredLevel"
+      }
+   },
+   "version" : "0.04"
+}
+

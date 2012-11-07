@@ -1,8 +1,4 @@
 package Log::Any::Adapter::ScreenColoredLevel;
-BEGIN {
-  $Log::Any::Adapter::ScreenColoredLevel::VERSION = '0.03';
-}
-# ABSTRACT: Send logs to screen with colorized messages according to level
 
 use 5.010;
 use strict;
@@ -12,6 +8,8 @@ use Log::Any;
 use Log::Any::Adapter::Util qw(make_method);
 use base qw(Log::Any::Adapter::Base);
 use Term::ANSIColor;
+
+our $VERSION = '0.04'; # VERSION
 
 my @logging_methods = Log::Any->logging_methods;
 my %logging_levels;
@@ -62,9 +60,8 @@ for my $method (Log::Any->logging_methods()) {
                 $msg = $self->{formatter}->($self, $msg);
             }
 
-            if ($self->{use_color}) {
-                $msg = Term::ANSIColor::colored(
-                    $msg, $self->{colors}{$method} // "");
+            if ($self->{use_color} && $self->{colors}{$method}) {
+                $msg = Term::ANSIColor::colored($msg, $self->{colors}{$method});
             }
 
             if ($self->{stderr}) {
@@ -88,8 +85,10 @@ for my $method (Log::Any->detection_methods()) {
 }
 
 1;
+# ABSTRACT: Send logs to screen with colorized messages according to level
 
 
+__END__
 =pod
 
 =head1 NAME
@@ -98,7 +97,7 @@ Log::Any::Adapter::ScreenColoredLevel - Send logs to screen with colorized messa
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 
@@ -108,7 +107,7 @@ version 0.03
      # colors    => { trace => 'bold yellow on_gray', ... }, # customize colors
      # use_color => 1, # force color even when not interactive
      # stderr    => 0, # print to STDOUT instead of STDERR
-     # formatter => sub { "LOG: $_[2]" }, # default none
+     # formatter => sub { "LOG: $_[1]" }, # default none
  );
 
 =head1 DESCRIPTION
@@ -116,7 +115,8 @@ version 0.03
 This Log::Any adapter prints log messages to screen (STDERR/STDOUT) colored
 according to level. It is just like
 L<Log::Log4perl::Appender::ScreenColoredLevel>, even down to the default colors,
-except that you don't have to use Log::Log4perl.
+except that you don't have to use Log::Log4perl. Of course, unlike Log4perl, it
+only logs to screen and has minimal features.
 
 Parameters:
 
@@ -185,13 +185,10 @@ Steven Haryanto <stevenharyanto@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Steven Haryanto.
+This software is copyright (c) 2012 by Steven Haryanto.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
 
